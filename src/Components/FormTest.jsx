@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
+import "./css/styling.css";
 class EForm extends Component {
     constructor(props) {
         super(props);
@@ -17,14 +17,22 @@ class EForm extends Component {
         // const edited = this.state.edited;
         return(<div>
             <div>
+                <div className={"Canvas"}>
+                <div className={"Form"}>
                 {this.state.edit ?
-                    <form onSubmit={this.handleSubmit}>
+                    <div className={"FormI Form--back"}>
+                        <form onSubmit={this.handleSubmit}>
                         <input type="text" name="firstName" placeholder="First Name Goes Here" value={this.state.firstName} onChange={this.handleChange}></input>
                         <input type="text" name="lastName" placeholder="Last Name Goes Here" value={this.state.lastName} onChange={this.handleChange}></input>
                         <button>Submit</button>
-                    </form>:<div><h1>{this.state.firstName}</h1>
-                    <h1>{this.state.lastName}</h1></div>}
-                <div>{this.state.edited ? <span></span> : <button onClick={this.handleClick}>Edit</button> }</div>
+                        </form>
+                    </div> : <div className={"FormI FormI--front"}><h1>{this.state.firstName}</h1>
+                            <h1>{this.state.lastName}</h1></div>}
+                    </div>
+                </div>
+                    <div>{this.state.edited ? <span></span> : <button onClick={this.handleClick}>Edit</button>}
+                    
+                </div>
                 <button onClick={this.handleCancel}>Cancel</button>
             </div>
         </div>)
