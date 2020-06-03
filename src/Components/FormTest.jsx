@@ -10,61 +10,46 @@ class EForm extends Component {
       edit: false,
       edited: false,
       cancel: false,
+      back: false,
+      front:false,
     };
   }
 
   render() {
+    const back = this.state.back;
+    const front = this.state.front;
     return (
-      <div>
-        <div>
-          {this.state.edit ? (
-            <form onSubmit={this.handleSubmit}>
-              <input
-                type="text"
-                name="firstName"
-                placeholder="First Name Goes Here"
-                value={this.state.firstName}
-                onChange={this.handleChange}
-              ></input>
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name Goes Here"
-                value={this.state.lastName}
-                onChange={this.handleChange}
-              ></input>
-              <button>Submit</button>
-            </form>
-          ) : (
-            <div>
-
-                <div className={"Canvas"}>
-                <div className={"Form"}>
+      <div className={"main"}>
+          <div className={"Canvas"}>
+          <div className={"Form"} style={{
+            transform:front ?  "rotateY(-180deg)":null,
+            transform: back ? "rotateY(180deg)" : null,
+            backfaceVisibility: back ? "visible" : "hidden"
+            
+          }}>
                 {this.state.edit ?
-                    <div className={"FormI Form--back"}>
+                    <div className={"FormI FormI--back"}>
                         <form onSubmit={this.handleSubmit}>
-                        <input type="text" name="firstName" placeholder="First Name Goes Here" value={this.state.firstName} onChange={this.handleChange}></input>
-                        <input type="text" name="lastName" placeholder="Last Name Goes Here" value={this.state.lastName} onChange={this.handleChange}></input>
+                  <input type="text" name="firstName" placeholder="First Name Goes Here" value={this.state.firstName} onChange={this.handleChange}></input>
+                  <br/>
+                        <input type="text" name="lastName" placeholder="Last Name Goes Here" value={this.state.lastName} onChange={this.handleChange}></input><br/>
                         <button>Submit</button>
                         </form>
                     </div> : <div className={"FormI FormI--front"}><h1>{this.state.firstName}</h1>
                             <h1>{this.state.lastName}</h1></div>}
                     </div>
-                </div>
-                    <div>{this.state.edited ? <span></span> : <button onClick={this.handleClick}>Edit</button>}
-                    
-                </div>
-                <button onClick={this.handleCancel}>Cancel</button>
+                </div>        
+             
 
-            </div>
-          )}
+          
           <div>
             {this.state.edited ? (
               <span></span>
             ) : (
               <button onClick={this.handleClick}>Edit</button>
             )}
-          </div>
+        </div>
+        <div>
           {this.state.cancel ? (
             <button onClick={this.handleCancel}>Cancel</button>
           ) : (
@@ -74,12 +59,12 @@ class EForm extends Component {
       </div>
     );
   }
+  tog = () => {
+  }
   handleClick = () => {
-    if (this.state.edit === false) {
-      // this.setState({})
-      this.setState({ edited: true, edit: true, cancel: true });
-      console.log(this.state.cancel);
-      console.log("edit", this.state.edit);
+    if (this.state.edit === false) {      
+      this.tog();
+      this.setState({ edited: true, edit: true, cancel: true,back:true });
     } else {
       this.setState({ edit: false });
     }
@@ -91,6 +76,8 @@ class EForm extends Component {
       edited: false,
       edit: false,
       cancel: false,
+      front: true,
+      back:false,
     });
   };
 
@@ -100,6 +87,8 @@ class EForm extends Component {
       edit: false,
       edited: false,
       cancel: false,
+      front: true,
+      back:false,
     });
     this.setState({ cancel: false });
   };

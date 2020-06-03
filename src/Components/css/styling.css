@@ -1,27 +1,27 @@
 .Canvas{
     width:300px;
   height: 200px;
-  border: 1px solid #CCC;
+  /* border: 1px solid #CCC; */
+  position:inherit;
   margin: 40px 0;
   perspective: 600px;
 }
-.Form.is-flipped{
-    transform:rotate(180deg);
-}
+
 .Form{
     width: 100%;
   height: 100%;
   transition: transform 1s;
   transform-style: preserve-3d;
   cursor: pointer;
-  position: relative;
+  /* position: relative; */
 }
 .FormI{
-   position: absolute;
+  padding-top:10px; 
+   /* position: absolute; */
   width: 100%;
   height: 100%;
   /* line-height: 260px; */
-  color: black;
+  color: white;
   text-align: center;
   font-weight: bold;
   font-size: 20px;
@@ -30,10 +30,25 @@
   border-radius: 10%;
 }
 .FormI--back{
-    background:slategray;
+    background:black;
     transform: rotateY(180deg);
 }
 .FormI--front{
-    background:slategray;
+    background:black;
     /* transform: rotateY(180deg); */
+}
+input{
+  border-radius: 10%;
+}
+/* buttonPostion{
+  position:relative;
+} */
+.main{
+  position:relative;
+  padding-left:30px;
+  /* padding-top:40px; */
+  left:40vw;
+  border-style:ridge;
+  max-width:350px;
+  /* max-height: */
 }
